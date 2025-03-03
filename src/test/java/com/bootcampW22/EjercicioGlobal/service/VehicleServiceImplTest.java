@@ -35,22 +35,25 @@ class VehicleServiceImplTest {
     @Test
     void searchVehiclesByYearAndColor() {
         // Arrange
-        List<Vehicle> expected = List.of(
+        List<Vehicle> vehiclesEntity = List.of(
                 new Vehicle(1L, "Toyota", "Corolla", "ABC123", "Red", 2000, "180 km/h", 5, "Gasoline", "Automatic", 1.45, 1.75, 1300),
                 new Vehicle(2L, "Ford", "Focus", "DEF456", "Red", 2000, "200 km/h", 5, "Diesel", "Manual", 1.42, 1.79, 1400),
                 new Vehicle(3L, "Honda", "Civic", "GHI789", "Red", 2000, "190 km/h", 5, "Hybrid", "Automatic", 1.43, 1.80, 1350)
         );
 
-        when(iVehicleRepository.findVehiclesByYearAndColor("Red", 2000)).thenReturn(expected);
+        List<VehicleDto> vehiclesDto = List.of(
+                new VehicleDto(1L, "Toyota", "Corolla", "ABC123", "Red", 2000, "180 km/h", 5, "Gasoline", "Automatic", 1.45, 1.75, 1300),
+                new VehicleDto(2L, "Ford", "Focus", "DEF456", "Red", 2000, "200 km/h", 5, "Diesel", "Manual", 1.42, 1.79, 1400),
+                new VehicleDto(3L, "Honda", "Civic", "GHI789", "Red", 2000, "190 km/h", 5, "Hybrid", "Automatic", 1.43, 1.80, 1350)
+        );
+
+        when(iVehicleRepository.findVehiclesByYearAndColor("Red", 2000)).thenReturn(vehiclesEntity);
 
         // Act
         List<VehicleDto> result = vehicleService.searchVehiclesByYearAndColor("Red", 2000);
 
         // Assert
-        assertEquals(3, result.size());
-        assertEquals("Toyota", result.get(0).getBrand());
-        assertEquals("Ford", result.get(1).getBrand());
-        assertEquals("Honda", result.get(2).getBrand());
+        assertEquals(vehiclesDto, result);
     }
 
     @Test
