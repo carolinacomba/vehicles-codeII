@@ -1,5 +1,7 @@
 package com.bootcampW22.EjercicioGlobal.utils;
 
+import com.bootcampW22.EjercicioGlobal.dto.VehicleAvgCapacityByBrandDto;
+import com.bootcampW22.EjercicioGlobal.dto.VehicleAvgSpeedByBrandDto;
 import com.bootcampW22.EjercicioGlobal.dto.VehicleDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -43,6 +45,18 @@ public class Factory {
                 .width(198.0)
                 .weight(1750.0)
                 .build());
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.writeValueAsString(expected);
+    }
+
+    public static String getAverageSpeedByBrand() throws JsonProcessingException {
+        VehicleAvgSpeedByBrandDto expected = new VehicleAvgSpeedByBrandDto(230.0);
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.writeValueAsString(expected);
+    }
+
+    public static String getAverageCapacityByBrand() throws JsonProcessingException {
+        VehicleAvgCapacityByBrandDto expected = new VehicleAvgCapacityByBrandDto(4.0);
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.writeValueAsString(expected);
     }

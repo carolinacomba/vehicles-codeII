@@ -12,7 +12,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class VehicleRepositoryImplTest {
 
-
     private VehicleRepositoryImpl mockRepository;
 
     @BeforeEach
@@ -28,7 +27,8 @@ class VehicleRepositoryImplTest {
                         new Vehicle(2L, "Chevrolet", "Camaro", "AC123AB", "Red", 2020, "290", 4, "gasoline", "automatic", 145.0, 198.0, 1750.0),
                         new Vehicle(3L, "Fiat", "Cronos", "AA123AN", "Blue", 2015, "200", 3, "gas", "manual", 130.0, 191.0, 1580.0),
                         new Vehicle(4L, "Tesla", "Model S", "AF900DF", "Black", 2017, "210", 4, "gas", "manual", 140.0, 190.0, 1680.0),
-                        new Vehicle(5L, "BMW", "X5", "AD567HH", "White", 2022, "240", 5, "gas", "automatic", 150.0, 151.0, 1180.0))
+                        new Vehicle(5L, "BMW", "X5", "AD567HH", "White", 2022, "240", 5, "gas", "automatic", 150.0, 151.0, 1180.0),
+                        new Vehicle(6L, "BMW", "T5", "AC000CV", "Black", 2004, "220", 3, "gas", "automatic", 150.0, 151.0, 1180.0))
         );
 
         List<Vehicle> result = mockRepository.findAll();
@@ -63,7 +63,7 @@ class VehicleRepositoryImplTest {
     }
 
     @Test
-    void findVehiclesByBrandAndRangeOfYearTest(){
+    void findVehiclesByBrandAndRangeOfYearTest() {
         String brand = "Fiat";
         int starYear = 2000;
         int endYear = 2020;
@@ -83,7 +83,8 @@ class VehicleRepositoryImplTest {
         double weightMax = 1200.0;
 
         List<Vehicle> expected = new ArrayList<>(List.of(
-                new Vehicle(5L, "BMW", "X5", "AD567HH", "White", 2022, "240", 5, "gas", "automatic", 150.0, 151.0, 1180.0)
+                new Vehicle(5L, "BMW", "X5", "AD567HH", "White", 2022, "240", 5, "gas", "automatic", 150.0, 151.0, 1180.0),
+                new Vehicle(6L, "BMW", "T5", "AC000CV", "Black", 2004, "220", 3, "gas", "automatic", 150.0, 151.0, 1180.0)
         ));
 
         List<Vehicle> result = mockRepository.findVehiclesByRangeOfWeight(weightMin, weightMax);
