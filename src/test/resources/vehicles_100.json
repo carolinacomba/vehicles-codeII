@@ -73,5 +73,20 @@
     "height": 150.0,
     "width": 151.0,
     "weight": 1180.0
+  },
+  {
+    "id": 6,
+    "brand": "BMW",
+    "model": "T5",
+    "registration": "AC000CV",
+    "color": "Black",
+    "year": 2004,
+    "max_speed": 220,
+    "passengers": 3,
+    "fuel_type": "gas",
+    "transmission": "automatic",
+    "height": 150.0,
+    "width": 151.0,
+    "weight": 1180.0
   }
 ]
