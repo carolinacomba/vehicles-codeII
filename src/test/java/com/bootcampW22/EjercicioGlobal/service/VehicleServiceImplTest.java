@@ -13,8 +13,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -36,7 +35,7 @@ class VehicleServiceImplTest {
     }
 
     @Test
-    void searchVehiclesByYearAndColor() {
+    void searchVehiclesByYearAndColorTest() {
         //Arrange
         List<Vehicle> vehicles = List.of(new Vehicle(1L, "Ford", "Mustang", "AB123CD", "Red", 2021, "250", 4, "gasoline", "automatic", 140.0, 191.0, 1680.0));
         when(vehicleRepository.findVehiclesByYearAndColor("Red", 2021)).thenReturn(vehicles);
@@ -50,17 +49,16 @@ class VehicleServiceImplTest {
     }
 
     @Test
-    void searchVehiclesByYearAndColorWhenListIsEmpty() {
+    void searchVehiclesByYearAndColorWhenListIsEmptyTest() {
         //Arrange
-        List<Vehicle> vehicles = new ArrayList<>();
-        when(vehicleRepository.findVehiclesByYearAndColor("Red", 2021)).thenReturn(vehicles);
+        when(vehicleRepository.findVehiclesByYearAndColor("Red", 2021)).thenReturn(Collections.emptyList());
 
         //Act and Assert
         assertThrows(NotFoundException.class, () -> vehicleService.searchVehiclesByYearAndColor("Red", 2021));
     }
 
     @Test
-    void searchVehiclesByBrandAndRangeOfYear() {
+    void searchVehiclesByBrandAndRangeOfYearTest() {
         //Arrange
         List<Vehicle> vehicles = List.of(new Vehicle(2L, "Chevrolet", "Camaro", "AC123AB", "Red", 2020, "290", 4, "gasoline", "automatic", 145.0, 198.0, 1750.0));
         when(vehicleRepository.findVehiclesByBrandAndRangeOfYear("Chevrolet", 2019, 2021)).thenReturn(vehicles);
@@ -74,17 +72,16 @@ class VehicleServiceImplTest {
     }
 
     @Test
-    void searchVehiclesByBrandAndRangeOfYearWhenListIsEmpty() {
+    void searchVehiclesByBrandAndRangeOfYearWhenListIsEmptyTest() {
         //Arrange
-        List<Vehicle> vehicles = new ArrayList<>();
-        when(vehicleRepository.findVehiclesByBrandAndRangeOfYear("BMW", 2000, 2001)).thenReturn(vehicles);
+        when(vehicleRepository.findVehiclesByBrandAndRangeOfYear("BMW", 2000, 2001)).thenReturn(Collections.emptyList());
 
         //Act and Assert
         assertThrows(NotFoundException.class, () -> vehicleService.searchVehiclesByBrandAndRangeOfYear("BMW", 2000, 2001));
     }
 
     @Test
-    void calculateAvgSpeedByBrand() {
+    void calculateAvgSpeedByBrandTest() {
         //Arrange
         List<Vehicle> vehicles = List.of(
                 new Vehicle(5L, "BMW", "X5", "AD567HH", "White", 2022, "240", 5, "gas", "automatic", 150.0, 151.0, 1180.0),
@@ -101,17 +98,16 @@ class VehicleServiceImplTest {
     }
 
     @Test
-    void calculateAvgSpeedByBrandWhenListIsEmpty() {
+    void calculateAvgSpeedByBrandWhenListIsEmptyTest() {
         //Arrange
-        List<Vehicle> vehicles = new ArrayList<>();
-        when(vehicleRepository.findVehiclesByBrand("asda")).thenReturn(vehicles);
+        when(vehicleRepository.findVehiclesByBrand("asda")).thenReturn(Collections.emptyList());
 
         //Act and Assert
         assertThrows(NotFoundException.class, () -> vehicleService.calculateAvgCapacityByBrand("asda"));
     }
 
     @Test
-    void calculateAvgCapacityByBrand() {
+    void calculateAvgCapacityByBrandTest() {
         //Arrange
         List<Vehicle> vehicles = List.of(
                 new Vehicle(5L, "BMW", "X5", "AD567HH", "White", 2022, "240", 5, "gas", "automatic", 150.0, 151.0, 1180.0),
@@ -128,17 +124,16 @@ class VehicleServiceImplTest {
     }
 
     @Test
-    void calculateAvgCapacityByBrandWhenListIsEmpty() {
+    void calculateAvgCapacityByBrandWhenListIsEmptyTest() {
         //Arrange
-        List<Vehicle> vehicles = new ArrayList<>();
-        when(vehicleRepository.findVehiclesByBrand("sdfs")).thenReturn(vehicles);
+        when(vehicleRepository.findVehiclesByBrand("sdfs")).thenReturn(Collections.emptyList());
 
         //Act and Assert
         assertThrows(NotFoundException.class, () -> vehicleService.calculateAvgSpeedByBrand("sdfs"));
     }
 
     @Test
-    void searchVehiclesByRangeOfWeight() {
+    void searchVehiclesByRangeOfWeightTest() {
         //Arrange
         List<Vehicle> vehicles = List.of(new Vehicle(2L, "Chevrolet", "Camaro", "AC123AB", "Red", 2020, "290", 4, "gasoline", "automatic", 145.0, 198.0, 1750.0));
         when(vehicleRepository.findVehiclesByRangeOfWeight(1749.0, 1751.0)).thenReturn(vehicles);
@@ -152,10 +147,9 @@ class VehicleServiceImplTest {
     }
 
     @Test
-    void searchVehiclesByRangeOfWeightWhenListIsEmpty() {
+    void searchVehiclesByRangeOfWeightWhenListIsEmptyTest() {
         //Arrange
-        List<Vehicle> vehicles = new ArrayList<>();
-        when(vehicleRepository.findVehiclesByRangeOfWeight(1, 2)).thenReturn(vehicles);
+        when(vehicleRepository.findVehiclesByRangeOfWeight(1, 2)).thenReturn(Collections.emptyList());
 
         //Act and Assert
         assertThrows(NotFoundException.class, () -> vehicleService.searchVehiclesByRangeOfWeight(1, 2));
